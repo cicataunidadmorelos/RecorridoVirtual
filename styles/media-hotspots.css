@@ -1,0 +1,280 @@
+/* ================================================
+   IMAGE HOTSPOT — Modal fullscreen responsive
+   ================================================ */
+
+.image-hotspot {
+  position: relative;
+  font-family: 'Inter', sans-serif;
+}
+
+/* BOTÓN */
+.image-hotspot .image-hotspot-header {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c2185b, #8e0038);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.image-hotspot .image-hotspot-header:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(194, 24, 91, 0.65);
+}
+
+.image-hotspot-icon {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* OVERLAY */
+.image-hotspot-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.50);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(8px, 2vw, 24px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-hotspot-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MODAL */
+.image-hotspot-modal {
+  position: relative;
+  width: 100%;
+  max-width: 1250px;
+  max-height: 60vh;
+  background: #1e1e28;
+  border-radius: clamp(10px, 1.5vw, 16px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transform: scale(0.96) translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+.image-hotspot-overlay.visible .image-hotspot-modal {
+  transform: scale(1) translateY(0);
+}
+
+.image-hotspot-modal:not(:has(video, img)) {
+  max-width: 700px;
+}
+
+/* COLUMNA IZQUIERDA — media */
+.image-hotspot-media {
+  width: 50%;
+  flex-shrink: 0;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Se estira al alto del modal automáticamente */
+  overflow: hidden;
+}
+
+.image-hotspot-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-hotspot-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* COLUMNA DERECHA — info */
+.image-hotspot-info {
+  flex: 1;
+  padding: clamp(16px, 2.5vw, 36px) clamp(14px, 2.2vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.2vw, 16px);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.image-hotspot-info::-webkit-scrollbar { width: 5px; }
+.image-hotspot-info::-webkit-scrollbar-thumb {
+  background: #c2185b;
+  border-radius: 10px;
+}
+
+/* Tag */
+.image-hotspot-tag {
+  font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c2185b;
+}
+
+/* Título */
+.image-hotspot-title {
+  font-size: clamp(16px, 2vw, 26px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+/* Divider */
+.image-hotspot-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* Secciones */
+.image-hotspot-sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 18px);
+  flex: 1;
+}
+
+.image-hotspot-subtitle {
+  font-size: clamp(13px, 1.4vw, 18px);
+  color: #c8c8d4;
+  line-height: 1.7;
+  margin: 0;
+  text-align: justify;
+}
+
+.image-hotspot-subtitle strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* fallback texto plano */
+.image-hotspot-text {
+  font-size: clamp(13px, 1.3vw, 16px);
+  color: #b0b0be;
+  line-height: 1.65;
+}
+
+/* Footer */
+.image-hotspot-footer {
+  margin-top: auto;
+  padding-top: clamp(10px, 1.2vw, 18px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.image-hotspot-btn {
+  font-size: clamp(12px, 1vw, 14px);
+  padding: clamp(7px, 0.8vw, 10px) clamp(14px, 1.5vw, 22px);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.7);
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.image-hotspot-btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.image-hotspot-btn--primary {
+  background: #c2185b;
+  color: #fff;
+  border-color: #c2185b;
+}
+
+.image-hotspot-btn--primary:hover {
+  background: #a01050;
+}
+
+/* BOTÓN CERRAR */
+.image-hotspot-close {
+  position: absolute;
+  top: clamp(8px, 1vw, 14px);
+  right: clamp(8px, 1vw, 14px);
+  z-index: 10;
+  width: clamp(28px, 2.2vw, 36px);
+  height: clamp(28px, 2.2vw, 36px);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  font-size: clamp(12px, 1vw, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.image-hotspot-close:hover {
+  background: rgba(194, 24, 91, 0.75);
+}
+
+body.vr-modal-open {
+  overflow: hidden;
+}
+
+/* ================================================
+   RESPONSIVE — solo para layout estructural
+   (columnas vs apilado), no para tipografía
+   ================================================ */
+
+/* Por debajo de ~600px las columnas se apilan */
+@media (max-width: 600px) {
+  .image-hotspot-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .image-hotspot-modal {
+    flex-direction: column;
+    border-radius: 16px 16px 0 0;
+    max-height: 88vh;
+    max-width: 100%;
+  }
+
+  .image-hotspot-media {
+    width: 100%;
+    height: 45vw;
+    min-height: 160px;
+    max-height: 220px;
+    flex-shrink: 0;
+  }
+
+  .image-hotspot-info {
+    border-top: 4px solid #c2185b;
+    max-height: none;
+  }
+
+}

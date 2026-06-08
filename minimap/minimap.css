@@ -1,0 +1,159 @@
+#minimap-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* Caja roja de prueba */
+
+#minimap-container {
+    position: absolute;
+    top: calc(var(--topbar-height) + var(--ui-padding));
+    right: var(--ui-padding);
+    /* top: 5%;
+    right: 5%; */
+    
+    width: clamp(100px, 10vw, 250px);
+    height: clamp(100px, 10vw, 250px);
+    /* min-width: 100px;
+    max-width: 300px; */
+    
+    background-color: #2a2a2a;
+
+    border: 2px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    z-index: 9991;
+    cursor: zoom-in;
+    
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* -webkit-transition: all 0.5 ease-in-out; */
+    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+
+#minimap-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#minimap-container.is-expanded {
+    /* top: calc(var(--topbar-height) + var(--ui-padding));
+    right: var(--ui-padding); */
+    /* left: calc(var(--sidebar-width) + var(--ui-padding)); */
+
+    width: calc(100vw - var(--sidebar-width) - var(--ui-padding) * 2 - var(--chatbot-width));
+    height: calc(100vh - var(--topbar-height) - var(--ui-padding) * 2 - var(--bottom-height));
+
+    /* max-width: 3000px; */
+    /* aspect-ratio: auto; */
+
+    cursor: zoom-out;
+}
+
+@media (max-width: 768px) {
+    #minimap-container.is-expanded {
+        /* En móvil normalmente no hay sidebar fijo */
+        width: calc(100vw - var(--ui-padding) * 2);
+        height: calc(100vh - var(--topbar-height) - var(--chatbot-height) - var(--ui-padding) * 2);
+
+        /* Opcional: ocupar toda la pantalla */
+        /* width: 100vw;
+        height: 100vh; */
+
+        left: var(--ui-padding);
+        right: var(--ui-padding);
+        bottom: var(--bottom-height);
+
+        cursor: zoom-out;
+    }
+}
+
+
+
+/* Medidor de piso */
+
+#floor-meter {
+    position: absolute;
+    top: calc(var(--topbar-height) + var(--ui-padding));
+    right: calc(var(--ui-padding) + clamp(150px, 15vw, 250px) - 60px);
+
+    background-color: #6f1d46;
+    border: 2px solid #444;
+    border-radius: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9992;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.floor-label {
+    padding: 10px 15px;
+    color: #777;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.floor-label.is-active {
+    color: #fff;
+    background-color: #b33071; 
+}
+
+#minimap-container.is-expanded ~ #floor-meter {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Usuario */
+
+#user-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border: 3px solid white;
+    border-radius: 50%;
+    
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s linear;
+    z-index: 10;
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition: opactiy 0.3s ease, top 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+
+#minimap-container.is-expanded #user-dot {
+    opacity: 1;
+}
+
+#minimap-overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9990;
+    background-color: rgba(0, 0, 0, 0.4);
+}
