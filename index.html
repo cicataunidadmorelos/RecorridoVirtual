@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recorrido-Virtual-CICATA</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="minimap/minimap.css">
+<link rel="stylesheet" href="./styles/link-hotspot.css">
+<link rel="stylesheet" href="./styles/chatbot/chatbotHTMLTemplate.css">
+<link rel="stylesheet" href="./styles/chatbot/chatbotSidebar.css">
+<link rel="stylesheet" href="./styles/media-hotspots.css">
+</head>
+<body class="multiple-scenes view-control-buttons">
+
+<div id="pano"></div>
+
+<div id="minimap-container">
+  <div id="minimap-content">
+    <img src="piso0.png" id="minimap-image" alt="Floorpan map">
+    <div id="user-dot">
+    </div>
+  </div>
+</div>
+
+<div id="minimap-overlay"></div>
+
+<div id="floor-meter">
+  <div class="floor-label" data-floor="floor-2">PA</div>
+  <div class="floor-label" data-floor="floor-1">PB</div>
+  <div class="floor-label is-active" data-floor="floor-0">S</div>
+</div>
+
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-entrada-cicata">
+        <li class="text">Entrada-CICATA</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-zona-exterior">
+        <li class="text">Zona-Exterior</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-letras-cicata">
+        <li class="text">Letras CICATA</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="3-estacionamiento-exterior">
+        <li class="text">Estacionamiento-Exterior</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="4-estacionamiento-interior">
+        <li class="text">Estacionamiento-Interior</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="5-entrada-bioterio">
+        <li class="text">Entrada-Bioterio</li>
+      </a>
+      <a href="javascript:void(0)" class="scene" data-id="13-lobby-piso-1">
+        <li class="text">Lobby-Piso-1</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="14-oficinas-piso-1">
+        <li class="text">Oficinas-Piso-1</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="15-mesa-reuniones">
+        <li class="text">Mesa-Reuniones</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="16-pasillo-entrada-laboratorios">
+        <li class="text">Pasillo-Entrada-Laboratorios</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="17-pasillo-laboratorios-1">
+        <li class="text">Pasillo-Laboratorios-1</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="18-pasillo-laboratorios-2">
+        <li class="text">Pasillo-Laboratorios-2</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="19-pasillo-laboratorios-3">
+        <li class="text">Pasillo-Laboratorios-3</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="20-biologa-molecular">
+        <li class="text">Biología-Molecular</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="21-cultivo-celular-y-microscopia">
+        <li class="text">Cultivo-Celular-y-Microscopia</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="22-pasillo-laboratorios-4">
+        <li class="text">Pasillo-Laboratorios-4</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="23-microbiologa">
+        <li class="text">Microbiología</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="24-pasillo-laboratorios-5">
+        <li class="text">Pasillo-Laboratorios-5</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="25-camara-fria">
+        <li class="text">Camara-Fria</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="26-cromatografa-y-espectrofotometra">
+        <li class="text">Cromatografía y Espectrofotometría</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="27-pasillo-laboratorios-6">
+        <li class="text">Pasillo-Laboratorios-6</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="28-bioprocesos">
+        <li class="text">Bioprocesos</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="29-acondicionamiento-de-material">
+        <li class="text">Acondicionamiento-De-Material</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="30-lobby-piso-2">
+        <li class="text">Lobby-Piso-2</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="31-oficinas-segundo-piso">
+        <li class="text">Oficinas-Segundo-Piso</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="32-salon-clases-1">
+        <li class="text">Salon-Clases-1</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="33-salon-clases-2">
+        <li class="text">Salon-Clases-2</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="34-biblioteca">
+        <li class="text">Biblioteca</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="35-sala-reuniones-2">
+        <li class="text">Sala-Reuniones-2</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="36-salas-vacias-segundo-piso">
+        <li class="text">Salas-Vacias-Segundo-Piso</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="37-laboratorio-de-computo">
+        <li class="text">Laboratorio-de-Computo</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="38-sala-grande">
+        <li class="text">Sala-Grande</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="39-sala-pequea">
+        <li class="text">Sala-Pequeña</li>
+      </a>
+    
+  </ul>
+</div>
+
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
+
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.webp">
+  <img class="icon on" src="img/pause.webp">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.webp">
+  <img class="icon on" src="img/windowed.webp">
+</a>
+
+<a href="javascript:void(0)" id="sceneListToggle">
+  <img class="icon off" src="img/expand.webp">
+  <img class="icon on" src="img/collapse.webp">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.webp">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.webp">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.webp">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.webp">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.webp">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.webp">
+</a>
+
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+<script src="minimap/minimap.js"></script>
+
+<script src="data.js"></script>
+<script type="module" src="index.js"></script>
+
+
+<script type="module" src="./chatbot/chatbotManager.js"></script>
+
+</body>
+</html>
